@@ -42,8 +42,19 @@ public class MovimientoJugador : MonoBehaviour
 
     public void Sembrar(InputAction.CallbackContext contexto){
         if(contexto.started){
-            Debug.Log("Presionaste C");
-            Instantiate(trigo, transform.position, Quaternion.identity);
+            // Debug.Log("Presionaste C");
+
+            //obtener la última dirección en la que se movió el jugador
+            float dirX = animator.GetFloat("entradaX");
+            float dirY = animator.GetFloat("entradaY");
+
+            // Normalizar para que sea constante
+            Vector2 direccion = new Vector2(dirX,dirY).normalized;
+
+            // posicion final
+            Vector2 posicionFinal = (Vector2)transform.position + direccion * 1f;
+
+            Instantiate(trigo, posicionFinal, Quaternion.identity);
         }
     }
 }
