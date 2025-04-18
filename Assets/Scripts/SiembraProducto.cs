@@ -4,15 +4,15 @@ using System.Collections;
 public class SiembraProducto : MonoBehaviour
 {
     //crear variables
-    // public DatosSemillas datos;
+    public DatoSemillas dato;
     private int estado=0; //para controlar las animaciones
-    private float tiempoEspera = 8f;
+    private float tiempoEspera;
     private Animator animaciones;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //tiempoEspera = datos.tiempoEspera;
+        tiempoEspera = dato.tiempoEspera;
         animaciones = GetComponent<Animator>();
         //iniciar la Coroutine
         StartCoroutine(Siembra());
