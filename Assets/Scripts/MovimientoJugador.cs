@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class MovimientoJugador : MonoBehaviour
 {
+    //variables
     private float velocidad = 5f;
     private Rigidbody2D rb;
     private Vector2 entrada;
@@ -10,19 +11,21 @@ public class MovimientoJugador : MonoBehaviour
 
     [Header("PreFabs")]
     public GameObject trigo;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // Start es llamada cuando se inicia el script
     void Start()
-    {
+    { // enlazar componentes
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    // Update es llamada un vez por frame
     void Update()
     {
         rb.linearVelocity = entrada * velocidad;
     }
 
+    // funciones creadas por nosotros
     public void Moverse(InputAction.CallbackContext contexto){
         animator.SetBool("estaCaminando", true);
 
